@@ -1,6 +1,6 @@
 mod reservation;
 
-use crate::reservation::workflows::make_reservation;
+use crate::reservation::timelines::make_reservation;
 
 use axum::http::StatusCode;
 use axum::routing::{get, post};
@@ -35,13 +35,12 @@ async fn health_check() -> StatusCode {
 #[derive(OpenApi)]
 #[openapi(
     paths(
-        reservation::workflows::make_reservation,
+        reservation::timelines::make_reservation,
     ),
     components(schemas(
-        reservation::api_schemas::ReservationRequest,
-        reservation::api_schemas::ReservationResponse,
-        reservation::api_schemas::CardDetails,
-        reservation::api_schemas::CustomerDetails,
+        reservation::data_models::api_schemas::ReservationRequest,
+        reservation::data_models::api_schemas::ReservationResponse,
+        reservation::data_models::entities::CardDetails,
     )),
     tags((name = "Reservation"))
 )]
