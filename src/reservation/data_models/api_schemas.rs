@@ -5,7 +5,7 @@ use std::convert::TryFrom;
 
 use crate::reservation::data_models::values::ReservationValueError;
 use crate::reservation::data_models::entities::{
-    VerifiedReservationRequest, ReservationType, CardDetails, PaymentOption
+    ValidatedReservationRequest, ReservationType, CardDetails, PaymentOption
 };
 
 // make_reservation
@@ -50,7 +50,7 @@ pub enum PaymentMethodEnum {
     Cash,
 }
 
-impl TryFrom<ReservationRequest> for VerifiedReservationRequest {
+impl TryFrom<ReservationRequest> for ValidatedReservationRequest {
     type Error = ReservationValueError;
 
     fn try_from(request: ReservationRequest) -> Result<Self, Self::Error> {
@@ -77,7 +77,7 @@ impl TryFrom<ReservationRequest> for VerifiedReservationRequest {
         };
         let special_requests = request.special_requests.try_into()?;
 
-        Ok(VerifiedReservationRequest::new(
+        Ok(ValidatedReservationRequest::new(
             user_id,
             received_timestamp,
             restaurant_id,

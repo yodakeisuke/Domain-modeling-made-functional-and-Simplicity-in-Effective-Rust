@@ -7,7 +7,7 @@ use crate::reservation::data_models::values::{NumberOfGuests, RestaurantId, User
 
 // entities
 #[derive(Serialize, Deserialize, ToSchema, Debug)]
-pub struct VerifiedReservationRequest {
+pub struct ValidatedReservationRequest {
     user_id: UserId,
     received_timestamp: DateTime<Utc>,
     restaurant_id: RestaurantId,
@@ -56,7 +56,7 @@ pub enum PaymentStatus {
     Unpaid,
 }
 
-impl VerifiedReservationRequest {
+impl ValidatedReservationRequest {
     pub fn new(
         user_id: UserId,
         received_timestamp: DateTime<Utc>,
@@ -65,7 +65,7 @@ impl VerifiedReservationRequest {
         payment_option: PaymentOption,
         special_requests: SpecialRequests,
     ) -> Self {
-        VerifiedReservationRequest {
+        ValidatedReservationRequest {
             user_id,
             received_timestamp,
             restaurant_id,

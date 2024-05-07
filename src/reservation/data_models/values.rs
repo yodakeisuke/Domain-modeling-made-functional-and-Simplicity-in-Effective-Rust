@@ -33,9 +33,9 @@ pub enum ReservationValueError {
 }
 
 impl From<ParseError> for ReservationValueError {
-  fn from(err: ParseError) -> Self {
-      ReservationValueError::ParseError(err.to_string())
-  }
+    fn from(err: ParseError) -> Self {
+        ReservationValueError::ParseError(err.to_string())
+    }
 }
 
 #[derive(Serialize, Deserialize, ToSchema, Debug, PartialEq, Clone)]
